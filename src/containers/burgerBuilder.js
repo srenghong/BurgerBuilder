@@ -50,6 +50,15 @@ class BurgerBuilder extends Component {
     }
   };
 
+  orderedHandler = () => {
+    alert("Ordered!");
+    const resetIngredient = { ...this.state.ingredients };
+    for (let ingredient in resetIngredient) {
+      resetIngredient[ingredient] = 0;
+    }
+    this.setState({ totalPrice: 0, ingredients: resetIngredient });
+  };
+
   render() {
     const disabledInfo = {
       ...this.state.ingredients
@@ -68,6 +77,7 @@ class BurgerBuilder extends Component {
           removeIngredient={this.removeIngredientHandler}
           disabledInfo={disabledInfo}
           canOrder={this.state.totalPrice > 0 ? true : false}
+          ordered={this.orderedHandler}
         />
       </>
     );
